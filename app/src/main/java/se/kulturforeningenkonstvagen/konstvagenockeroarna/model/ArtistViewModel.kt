@@ -174,6 +174,16 @@ class ArtistViewModel(private val database: ArtistRoomDatabase) : ViewModel() {
                     currentMapZoom = event.zoom
                 )
             }
+            is UIEvent.CurrentMapFocusReset -> {
+                _uiState.value = _uiState.value.copy(
+                    currentMapFocus = event.coordinates
+                )
+            }
+            is UIEvent.CurrentMapZoomReset -> {
+                _uiState.value = _uiState.value.copy(
+                    currentMapZoom = event.zoom
+                )
+            }
         }
     }
 

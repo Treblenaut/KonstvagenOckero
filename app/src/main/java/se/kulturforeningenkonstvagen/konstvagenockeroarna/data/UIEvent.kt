@@ -10,4 +10,6 @@ sealed class UIEvent {
     data class CurrentCategoriesChanged(val categories: List<CategorySelection>): UIEvent()
     data class CurrentMapFocusChanged(val coordinates: LatLng): UIEvent()
     data class CurrentMapZoomChanged(val zoom: Float): UIEvent()
+    data class CurrentMapZoomReset(val zoom: Float): UIEvent()
+    data class CurrentMapFocusReset(val coordinates: LatLng): UIEvent()
 }

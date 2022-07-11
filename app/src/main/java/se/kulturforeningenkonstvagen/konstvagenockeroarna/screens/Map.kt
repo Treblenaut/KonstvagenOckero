@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
 import kotlinx.coroutines.launch
+import se.kulturforeningenkonstvagen.konstvagenockeroarna.data.UIState
 
 @SuppressLint("FlowOperatorInvokedInComposition")
 @Composable
@@ -39,6 +40,9 @@ fun MapScreen(
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(startPosition, mapZoom)
     }
+
+    artistViewModel.onEvent(UIEvent.CurrentMapFocusReset(artistViewModel.uiState.value.startMapFocus))
+    artistViewModel.onEvent(UIEvent.CurrentMapZoomReset(artistViewModel.uiState.value.startMapZoom))
 
     GoogleMap(
         modifier = Modifier.fillMaxSize(),
