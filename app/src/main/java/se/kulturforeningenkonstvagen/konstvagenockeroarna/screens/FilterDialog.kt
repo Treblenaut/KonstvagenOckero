@@ -122,9 +122,8 @@ fun ChipGroup(
     artistViewModel: ArtistViewModel,
     categories: List<CategorySelection> = artistViewModel.uiState.value.allCategories
 ) {
-    KonstvågenÖckeröarnaTheme() {
-        Column(
-        ) {
+    KonstvågenÖckeröarnaTheme {
+        Column {
             FlowRow(
                 mainAxisSpacing = 4.dp,
                 crossAxisSpacing = 4.dp,

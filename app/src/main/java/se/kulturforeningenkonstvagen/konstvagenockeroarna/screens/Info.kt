@@ -103,9 +103,10 @@ fun InfoScreen() {
                         },
                         modifier = Modifier.padding(horizontal = 4.dp),
                         style = TextStyle(
-                            fontWeight = FontWeight.Thin,
+                            fontWeight = FontWeight.Light,
                             fontSize = 16.sp,
-                            letterSpacing = 0.25.sp
+                            letterSpacing = 0.25.sp,
+                            color = MaterialTheme.colors.onBackground
                         )
                     )
                 }
@@ -132,9 +133,10 @@ fun InfoScreen() {
                         },
                         modifier = Modifier.padding(horizontal = 4.dp),
                         style = TextStyle(
-                            fontWeight = FontWeight.Thin,
+                            fontWeight = FontWeight.Light,
                             fontSize = 16.sp,
-                            letterSpacing = 0.25.sp
+                            letterSpacing = 0.25.sp,
+                            color = MaterialTheme.colors.onBackground
                         )
                     )
                 }
@@ -197,9 +199,10 @@ fun InfoScreen() {
                             uriHandler.openUri("https://www.ockero.se/bibliotek")
                         },
                         style = TextStyle(
-                            fontWeight = FontWeight.Thin,
+                            fontWeight = FontWeight.Light,
                             fontSize = 16.sp,
-                            letterSpacing = 0.25.sp
+                            letterSpacing = 0.25.sp,
+                            color = MaterialTheme.colors.onBackground
                         )
                     )
                 }
