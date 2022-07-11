@@ -82,11 +82,12 @@ fun CustomFilterDialog(
                     .padding(top = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+
+                // CLEAR FILTER
                 Button(
                     onClick = {
                         artistViewModel.clearFilter()
                         artistViewModel.generateArtists()
-                        settingsViewModel.onFilterStateChange(false)
                     },
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.LightGray),
                     modifier = Modifier
@@ -99,6 +100,7 @@ fun CustomFilterDialog(
                     )
                 }
 
+                // APPLY FILTER
                 Button(
                     onClick = {
                         artistViewModel.applyFilter()
