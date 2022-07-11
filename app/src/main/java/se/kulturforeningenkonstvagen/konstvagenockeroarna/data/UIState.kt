@@ -22,6 +22,8 @@ data class UIState(
     val currentArtists: List<Artist> = emptyList(),
     val allCategories: List<CategorySelection> = emptyList(),
     val currentCategories: List<CategorySelection> = emptyList(),
-    val currentMapFocus: LatLng = LatLng(57.72, 11.6485441),
-    val currentMapZoom: Float = 11.8f
+    val startMapFocus: LatLng = LatLng(57.72, 11.6485441),
+    val startMapZoom: Float = 11.8f,
+    val currentMapFocus: LatLng = startMapFocus,
+    val currentMapZoom: Float = startMapZoom
 )
