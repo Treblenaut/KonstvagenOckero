@@ -1,6 +1,5 @@
 package se.kulturforeningenkonstvagen.konstvagenockeroarna.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,16 +10,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.data.Artist
 
 @Composable
 fun PreviewCard(artist: Artist) {
-    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -32,14 +31,12 @@ fun PreviewCard(artist: Artist) {
             .shadow(elevation = 8.dp)
     ) {
         Row {
-            Image(
-                painter = painterResource(
-                    id = context.resources.getIdentifier(
-                        artist.artistExhibitionImage,
-                        "drawable",
-                        context.packageName
-                    )
-                ),
+            // Fetch image from Internet
+            AsyncImage(model = ImageRequest.Builder(LocalContext.current)
+                .allowHardware(false)
+                .data(artist.artistExhibitionImage)
+                .crossfade(true)
+                .build(),
                 contentDescription = "Image belonging to ${artist.artistName}",
                 modifier = Modifier.size(132.dp)
             )

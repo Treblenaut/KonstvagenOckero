@@ -9,12 +9,16 @@ fun getMarkerNumber(id: Int): String {
     return result
 }
 
-fun generateImgSrc(id: Int): String {
+fun createExhibitionUrl(id: Int): String {
     val longNumber = getMarkerNumber(id)
-    return "exhibition$longNumber"
+    val base =
+        "https://treblenaut.github.io/KonstvagenOckeroarna/docs/images/"
+    return "$base$longNumber.jpg"
 }
 
-fun generatePortraitSrc(id: Int): String {
+fun createArtistImageUrl(id: Int): String {
     val longNumber = getMarkerNumber(id)
-    return "selfie_$longNumber"
+    val base =
+        "https://treblenaut.github.io/KonstvagenOckeroarna/docs/images/"
+    return base + "selfie_" + longNumber + ".jpg"
 }

@@ -14,10 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
@@ -27,6 +24,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.data.Artist
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.data.LinkType
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.data.UIEvent
@@ -42,45 +41,33 @@ fun DetailScreen(
 
     val context = LocalContext.current
 
-    val resourceId = context.resources.getIdentifier(
-        currentArtist.artistExhibitionImage,
-        "drawable",
-        context.packageName
-    )
-
-    val resourcePortraitId = context.resources.getIdentifier(
-        currentArtist.artistPortraitImage,
-        "drawable",
-        context.packageName
-    )
-
     Column(
         Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
         Box {
-            // Exhibition Image
-            Image(
-                painter = painterResource(id = resourceId),
+            AsyncImage(model = ImageRequest.Builder(LocalContext.current)
+                .data(currentArtist.artistExhibitionImage)
+                .crossfade(true)
+                .build(),
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxWidth()
             )
 
-            // Check if there is an image to display
-            if (resourcePortraitId != 0) {
-                // ARTIST PORTRAIT
-                Image(
-                    painter = painterResource(resourcePortraitId),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .offset(x = (-20).dp, y = 40.dp)
-                        .clip(CircleShape)
-                        .align(Alignment.BottomEnd)
-                        .shadow(8.dp, CircleShape, clip = true)
-                )
-            }
+            AsyncImage(model = ImageRequest.Builder(LocalContext.current)
+                .data(currentArtist.artistPortraitImage)
+                .crossfade(true)
+                .build(),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .offset(x = (-20).dp, y = 40.dp)
+                    .clip(CircleShape)
+                    .align(Alignment.BottomEnd),
+                onError = {}
+            )
         }
 
         Column(
@@ -166,7 +153,14 @@ fun ContactDetails(artist: Artist, context: Context, artistViewModel: ArtistView
             .padding(8.dp)
             .fillMaxWidth()
             .clickable(onClick = {
-                artistViewModel.onEvent(UIEvent.CurrentMapFocusChanged(LatLng(artist.artistLat, artist.artistLng)))
+                artistViewModel.onEvent(
+                    UIEvent.CurrentMapFocusChanged(
+                        LatLng(
+                            artist.artistLat,
+                            artist.artistLng
+                        )
+                    )
+                )
                 artistViewModel.onEvent(UIEvent.CurrentMapZoomChanged(18f))
                 navController.navigate("map")
             }),

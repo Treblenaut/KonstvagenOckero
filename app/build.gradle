@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "se.kulturforeningenkonstvagen.konstvagenockeroarna"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 9
         versionName "1.2.2"
 
@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     buildFeatures {
         compose true
@@ -50,25 +50,25 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
-    implementation 'androidx.compose.runtime:runtime-livedata:1.1.1'
-    implementation 'androidx.activity:activity-compose:1.4.0'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1'
+    implementation 'androidx.compose.runtime:runtime-livedata:1.4.3'
+    implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation 'com.google.android.material:material:1.9.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "androidx.navigation:navigation-compose:2.4.2"
-    implementation "com.google.maps.android:maps-compose:2.4.0"
-    implementation "com.google.android.gms:play-services-maps:18.0.2"
+    implementation "androidx.navigation:navigation-compose:2.5.3"
+    implementation 'com.google.maps.android:maps-compose:2.11.4'
+    implementation "com.google.android.gms:play-services-maps:18.0.0"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation 'androidx.ui:ui-foundation:0.1.0-dev03'
+    implementation 'androidx.ui:ui-foundation:0.1.0-dev14'
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
@@ -76,11 +76,11 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
 
     // FlowRow
-    implementation "com.google.accompanist:accompanist-flowlayout:0.24.10-beta"
+    implementation 'com.google.accompanist:accompanist-flowlayout:0.31.3-beta'
 
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -88,10 +88,13 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
 
     // Moshi
-    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
-    implementation 'com.squareup.moshi:moshi:1.13.0'
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
-    implementation "com.squareup.moshi:moshi-adapters:1.13.0"
+    implementation 'com.squareup.moshi:moshi-kotlin:1.15.0'
+    implementation 'com.squareup.moshi:moshi:1.15.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.15.0'
+    implementation 'com.squareup.moshi:moshi-adapters:1.15.0'
+
+    // Coil
+    implementation 'io.coil-kt:coil-compose:2.4.0'
 
     // System bar
     implementation 'com.google.accompanist:accompanist-systemuicontroller:0.17.0'
