@@ -20,7 +20,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ArtistApiService{
-    @GET("artists.json")
+    @GET("2023.json")
     suspend fun getJson(): List<JsonArtist>
 }
 

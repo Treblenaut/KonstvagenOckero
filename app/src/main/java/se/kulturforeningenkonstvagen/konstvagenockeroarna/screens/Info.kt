@@ -44,7 +44,7 @@ fun InfoScreen() {
                 )
 
                 Text(
-                    text = "ÖCKERÖ 2022",
+                    text = "ÖCKERÖ 2023",
                     style = MaterialTheme.typography.h4,
                     textAlign = TextAlign.Justify
                 )
@@ -60,13 +60,13 @@ fun InfoScreen() {
 
                 // INFO AND DATE
                 Text(
-                    text = "Besök 110 konstnärer på Öckeröarna",
+                    text = "Besök över 100 konstnärer på Öckeröarna",
                     modifier = Modifier.padding(top = 8.dp),
                     textAlign = TextAlign.Center
                 )
 
                 Text(
-                    text = "6 - 7 augusti",
+                    text = "5 - 6 augusti",
                     textAlign = TextAlign.Justify,
                     style = MaterialTheme.typography.h4
                 )
@@ -151,7 +151,7 @@ fun InfoScreen() {
 
 
                 Text(
-                    text = "Samlingsutställning \n11 juni - 7 augusti",
+                    text = "Samlingsutställning \n10 juni - 6 augusti",
                     textAlign = TextAlign.Center
                 )
                 Column(
@@ -208,7 +208,7 @@ fun InfoScreen() {
                 }
 
                 Text(
-                    text = "Under Konstvågenhelgen \n6 - 7 augusti \när utställningen öppen \n11 - 16",
+                    text = "Under Konstvågenhelgen \n5 - 6 augusti \när utställningen öppen \n11 - 17",
                     textAlign = TextAlign.Center
                 )
 

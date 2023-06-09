@@ -31,7 +31,6 @@ class ArtistViewModel(private val database: ArtistRoomDatabase) : ViewModel() {
             try {
                 val listResult = ArtistApi.retrofitService.getJson()
                 parseJsonData(listResult)
-                Log.d("helpme", listResult.toString())
             } catch (e: Exception) {
                 Log.d("failureError", e.message.toString())
             }
@@ -52,7 +51,8 @@ class ArtistViewModel(private val database: ArtistRoomDatabase) : ViewModel() {
             artistFacebook = artist.artistFacebook,
             artistDescription = artist.artistDescription,
             artistExhibitionImage = createExhibitionUrl(artist.id),
-            artistPortraitImage = createArtistImageUrl(artist.id)
+            artistPortraitImage = createArtistImageUrl(artist.id),
+            fridayExhibition = artist.fridayExhibition
         )
     }
 
