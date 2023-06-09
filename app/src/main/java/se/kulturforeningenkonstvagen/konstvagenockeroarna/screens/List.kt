@@ -1,6 +1,5 @@
 package se.kulturforeningenkonstvagen.konstvagenockeroarna.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -10,7 +9,6 @@ import androidx.compose.material.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.data.Artist
@@ -19,6 +17,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.data.UIEvent
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.model.ArtistViewModel
 import se.kulturforeningenkonstvagen.konstvagenockeroarna.model.SettingsViewModel
@@ -55,13 +55,6 @@ fun ListScreen(
 
 @Composable
 fun CustomItem(artist: Artist, navController: NavController, artistViewModel: ArtistViewModel) {
-    val context = LocalContext.current
-    val resourceId = context.resources.getIdentifier(
-        artist.artistExhibitionImage,
-        "drawable",
-        context.packageName
-    )
-
     Row(
         modifier = Modifier
             .background(MaterialTheme.colors.background)
@@ -74,9 +67,10 @@ fun CustomItem(artist: Artist, navController: NavController, artistViewModel: Ar
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        // EXHIBITION IMAGE
-        Image(
-            painter = painterResource(id = resourceId),
+        AsyncImage(model = ImageRequest.Builder(LocalContext.current)
+            .data(artist.artistExhibitionImage)
+            .crossfade(true)
+            .build(),
             contentDescription = "",
             contentScale = ContentScale.Crop,
             modifier = Modifier

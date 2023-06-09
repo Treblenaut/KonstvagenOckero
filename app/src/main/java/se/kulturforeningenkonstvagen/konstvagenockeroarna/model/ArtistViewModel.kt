@@ -14,8 +14,6 @@ class ArtistViewModel(private val database: ArtistRoomDatabase) : ViewModel() {
     private var _uiState = mutableStateOf(UIState())
     val uiState: State<UIState> = _uiState
 
-
-
     init {
         getJsonData()
         generateArtists()
@@ -33,6 +31,7 @@ class ArtistViewModel(private val database: ArtistRoomDatabase) : ViewModel() {
             try {
                 val listResult = ArtistApi.retrofitService.getJson()
                 parseJsonData(listResult)
+                Log.d("helpme", listResult.toString())
             } catch (e: Exception) {
                 Log.d("failureError", e.message.toString())
             }
@@ -52,8 +51,8 @@ class ArtistViewModel(private val database: ArtistRoomDatabase) : ViewModel() {
             artistInstagram = artist.artistInstagram,
             artistFacebook = artist.artistFacebook,
             artistDescription = artist.artistDescription,
-            artistExhibitionImage = generateImgSrc(artist.id),
-            artistPortraitImage = generatePortraitSrc(artist.id)
+            artistExhibitionImage = createExhibitionUrl(artist.id),
+            artistPortraitImage = createArtistImageUrl(artist.id)
         )
     }
 
