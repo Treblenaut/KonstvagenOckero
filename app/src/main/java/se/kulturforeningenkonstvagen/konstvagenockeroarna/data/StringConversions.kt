@@ -12,13 +12,13 @@ fun getMarkerNumber(id: Int): String {
 fun createExhibitionUrl(id: Int): String {
     val longNumber = getMarkerNumber(id)
     val base =
-        "https://treblenaut.github.io/KonstvagenOckeroarna/docs/images/"
+        "https://treblenaut.github.io/KonstvagenOckeroarna/images/"
     return "$base$longNumber.jpg"
 }
 
 fun createArtistImageUrl(id: Int): String {
     val longNumber = getMarkerNumber(id)
     val base =
-        "https://treblenaut.github.io/KonstvagenOckeroarna/docs/images/"
+        "https://treblenaut.github.io/KonstvagenOckeroarna/images/"
     return base + "selfie_" + longNumber + ".jpg"
 }

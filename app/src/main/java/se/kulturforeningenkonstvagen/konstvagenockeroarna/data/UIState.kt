@@ -16,7 +16,8 @@ data class UIState(
         "",
         "",
         "000",
-        "000"
+        "000",
+        false
     ),
     val allArtists: List<Artist> = emptyList(),
     val currentArtists: List<Artist> = emptyList(),

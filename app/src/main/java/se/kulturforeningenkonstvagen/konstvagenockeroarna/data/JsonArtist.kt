@@ -11,7 +11,7 @@ data class JsonArtist (
     @Json(name = "Name")
     val artistName: String,
 
-    @Json(name = "Category")
+    @Json(name = "FilterCategories")
     val artistCategory: String,
 
     @Json(name = "Address")
@@ -20,13 +20,10 @@ data class JsonArtist (
     @Json(name = "Island")
     val artistIsland: String,
 
-    @Json(name = "Coordinates")
-    val artistCoordinates: String,
-
-    @Json(name = "Latitude")
+    @Json(name = "Lat")
     val artistLat: Double,
 
-    @Json(name = "Longitude")
+    @Json(name = "Long")
     val artistLng: Double,
 
     @Json(name = "Website")
@@ -38,6 +35,9 @@ data class JsonArtist (
     @Json(name = "Facebook")
     val artistFacebook: String?,
 
-    @Json(name = "Description")
-    val artistDescription: String?
+    @Json(name = "CategoryDescription")
+    val artistDescription: String?,
+
+    @Json(name = "Friday")
+    val fridayExhibition: Boolean
 )

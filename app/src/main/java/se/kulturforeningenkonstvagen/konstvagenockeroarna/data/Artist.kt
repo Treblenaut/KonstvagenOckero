@@ -43,5 +43,8 @@ data class Artist(
     val artistExhibitionImage: String,
 
     @ColumnInfo(name = "portrait")
-    val artistPortraitImage: String
+    val artistPortraitImage: String,
+
+    @ColumnInfo(name = "friday")
+    val fridayExhibition: Boolean
 )
