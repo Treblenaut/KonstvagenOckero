@@ -12,8 +12,8 @@ android {
         applicationId "se.kulturforeningenkonstvagen.konstvagenockeroarna"
         minSdk 23
         targetSdk 33
-        versionCode 9
-        versionName "1.2.2"
+        versionCode 10
+        versionName "1.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
