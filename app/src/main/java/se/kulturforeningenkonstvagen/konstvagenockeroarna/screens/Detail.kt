@@ -129,21 +129,24 @@ fun ContactDetails(artist: Artist, context: Context, artistViewModel: ArtistView
             SocialLink(
                 linkType = LinkType.WEBSITE,
                 artistLink = it,
-                context = context
+                context = context,
+                isInstagram = false
             )
         }
         artist.artistFacebook?.let {
             SocialLink(
                 linkType = LinkType.FACEBOOK,
                 artistLink = it,
-                context = context
+                context = context,
+                isInstagram = false
             )
         }
         artist.artistInstagram?.let {
             SocialLink(
                 linkType = LinkType.INSTAGRAM,
                 artistLink = it,
-                context = context
+                context = context,
+                isInstagram = true
             )
         }
     }
@@ -183,7 +186,7 @@ fun ContactDetails(artist: Artist, context: Context, artistViewModel: ArtistView
 }
 
 @Composable
-fun SocialLink(linkType: LinkType, artistLink: String, context: Context) {
+fun SocialLink(linkType: LinkType, artistLink: String, context: Context, isInstagram: Boolean) {
     if (!artistLink.isEmpty()) {
         val drawableName = "ic_${linkType}".lowercase()
         val uriHandler = LocalUriHandler.current
@@ -192,7 +195,7 @@ fun SocialLink(linkType: LinkType, artistLink: String, context: Context) {
             modifier = Modifier
                 .padding(start = 16.dp)
                 .clickable {
-                    val parsedLink = parseSocialLink(artistLink)
+                    val parsedLink = parseSocialLink(artistLink, isInstagram)
                     uriHandler.openUri(parsedLink)
                 },
             verticalAlignment = Alignment.CenterVertically,
@@ -222,8 +225,16 @@ fun SocialLink(linkType: LinkType, artistLink: String, context: Context) {
     }
 }
 
-fun parseSocialLink(artistLink: String): String {
-    val substring = artistLink.substringAfter("www.")
-    val https = "https://www."
+fun parseSocialLink(artistLink: String, isInstagram: Boolean): String {
+    var substring = ""
+    var https = ""
+
+    if (isInstagram) {
+        substring = artistLink
+        https = "https://www.instagram.com/"
+    } else {
+        substring = artistLink.substringAfter("www.")
+        https = "https://www."
+    }
     return https + substring
 }
